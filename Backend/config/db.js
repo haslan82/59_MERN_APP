@@ -35,24 +35,37 @@ const db = async () => {
 };
 
 module.exports = db; */
-
-require("dotenv").config();
-const mongoose = require("mongoose"); // Mongoose modülünü ekledik.
-
+/* require("dotenv").config();
+const mongoose = require("mongoose");
 
 const db = async () => {
   try {
-    await mongoose.connect('mongodb+srv://haslan82:828200HRsk.%40cluster0.0vh1u.mongodb.net/', {
-      useNewUrlParser: true, // Bu seçenekler artık gerekli değil, ancak eklenebilir.
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
       useUnifiedTopology: true,
-    }).then(()=>{
-      console.log("MongoDB Connected...");})
-   
+    });
+    console.log("MongoDB Connected...");
   } catch (error) {
     console.error(`Error connecting to MongoDB at ${process.env.MONGO_URI}:`, error.message);
-    
+    process.exit(1); // Hata durumunda uygulamayı durdurur
   }
 };
 
 module.exports = db;
+ */
 
+
+
+const mongoose = require("mongoose");
+
+const db = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("MongoDB Connected...");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error.message);
+    process.exit(1); // Hata durumunda uygulamayı durdurur
+  }
+};
+
+module.exports = db;
