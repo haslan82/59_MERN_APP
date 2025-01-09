@@ -50,10 +50,14 @@ app.use(cors());
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cookieParser());
+const product = require("./controllers/product");
 
 app.get("/products", (req, res) => {
   res.status(200).json({ message: "Hello rota belirlendi" });
 });
+
+
+app.use("/", product); //! sorun bu satırdan kaynaklı
 
 // Veritabanını başlat
 db();
