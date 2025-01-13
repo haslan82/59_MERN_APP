@@ -1,9 +1,10 @@
-/* const product = require("../models/product");
+const product = require("../models/product");
 const ProductFilter = require("../models/product");
 
 const allProducts = async (req, res) => {
-    const productFilter = new ProductFilter(Product.find(), req.query).search().filter
-  const products = await productFilter..query
+  const  resultPerPage=10;
+    const productFilter = new ProductFilter(Product.find(), req.query).search().filter().pagination(resultPerPage)
+  const products = await productFilter.query
   res.status(200).json({products});
 };
 
@@ -48,13 +49,14 @@ module.exports = {
   createProducts,
   deleteProducts,
   updateProducts,
-}; */
+};
 
 
-const Product = require("../models/product");
+/* const Product = require("../models/product");
 const ProductFilter = require("../models/product");
 
 const allProducts = async (req, res) => {
+  const  resultPerPage=10;
   try {
     const productFilter = new ProductFilter(await Product.find(), req.query);
     res.status(200).json({ products: productFilter });
@@ -123,3 +125,4 @@ module.exports = {
   deleteProducts,
   updateProducts,
 };
+ */

@@ -57,7 +57,7 @@ app.get("/products", (req, res) => {
 });
 
 
-app.use("/", product); //! sorun bu satırdan kaynaklı
+//app.use("/", product); //! sorun bu satırdan kaynaklı
 
 // Veritabanını başlat
 db();
