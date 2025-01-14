@@ -15,7 +15,8 @@ const userSchema = new mangoose.Schema({
         }
     },
     role: {type: String, required: true, default: "user"},
-   
+   resetPasswordToken:String,
+   resetPasswordExpire:Date,
 },{timestamps: true})
 
 module.exports = mangoose.model("User", userSchema);
