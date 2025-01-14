@@ -42,8 +42,16 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 const db = require("./config/db");
+const cloudinary = require('cloudinary').v2;
 
 dotenv.config();
+
+cloudinary.config({ 
+  cloud_name:process.env.CLOUD_NAME, 
+  api_key:process.env.API_KEY, 
+  api_secret: process.env.API_SECRET, 
+});
+
 
 const app = express();
 app.use(cors());
