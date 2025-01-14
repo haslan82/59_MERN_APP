@@ -11,6 +11,11 @@ const allProducts = async (req, res) => {
   res.status(200).json({products});
 };
 
+const adminProducts = async (req, res,next) => {
+  const products = await Product.find();
+  res.status(200).json({products});
+};
+
 const detailProducts = async (req, res) => {
   const product = await Product.findById(req.params.id);
   res.status(200).json({product});
@@ -126,7 +131,8 @@ module.exports = {
   createProducts,
   deleteProducts,
   updateProducts,
-  createReview
+  createReview,
+  adminProducts
 };
 
 

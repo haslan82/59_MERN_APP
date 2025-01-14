@@ -36,13 +36,21 @@ app.listen(PORT, () =>
     }); */
 
 
-    const express = require("express");
+const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 const db = require("./config/db");
+const product = require('./routes/product');
+//const user = require('./routes/user');
+//!const user = require('./routes/user.js');
 const cloudinary = require('cloudinary').v2;
+
+
+
+
+
 
 dotenv.config();
 
@@ -58,14 +66,19 @@ app.use(cors());
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cookieParser());
-const product = require("./controllers/product");
+
 
 app.get("/products", (req, res) => {
   res.status(200).json({ message: "Hello rota belirlendi" });
 });
 
 
-//app.use("/", product); //! sorun bu satırdan kaynaklı
+//!app.use("/", product); //! sorun bu satırdan kaynaklı
+//!app.use("/",user);
+//!app.use('/products', product); // Product rotaları için
+//!app.use('/users', user);      // User rotaları için
+
+
 
 // Veritabanını başlat
 db();
